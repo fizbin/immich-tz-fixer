@@ -1,0 +1,579 @@
+from __future__ import annotations
+
+import datetime
+from collections.abc import Mapping
+from typing import Any, TypeVar, cast
+from uuid import UUID
+
+from attrs import define as _attrs_define
+from attrs import field as _attrs_field
+from dateutil.parser import isoparse
+
+from ..models.asset_type_enum import AssetTypeEnum
+from ..models.asset_visibility import AssetVisibility
+from ..types import UNSET, Unset
+
+T = TypeVar("T", bound="SmartSearchDto")
+
+
+@_attrs_define
+class SmartSearchDto:
+    """
+    Attributes:
+        album_ids (list[UUID] | Unset):
+        city (None | str | Unset):
+        country (None | str | Unset):
+        created_after (datetime.datetime | Unset):
+        created_before (datetime.datetime | Unset):
+        device_id (str | Unset):
+        is_encoded (bool | Unset):
+        is_favorite (bool | Unset):
+        is_motion (bool | Unset):
+        is_not_in_album (bool | Unset):
+        is_offline (bool | Unset):
+        language (str | Unset):
+        lens_model (None | str | Unset):
+        library_id (None | Unset | UUID):
+        make (str | Unset):
+        model (None | str | Unset):
+        ocr (str | Unset):
+        page (float | Unset):
+        person_ids (list[UUID] | Unset):
+        query (str | Unset):
+        query_asset_id (UUID | Unset):
+        rating (float | Unset):
+        size (float | Unset):
+        state (None | str | Unset):
+        tag_ids (list[UUID] | None | Unset):
+        taken_after (datetime.datetime | Unset):
+        taken_before (datetime.datetime | Unset):
+        trashed_after (datetime.datetime | Unset):
+        trashed_before (datetime.datetime | Unset):
+        type_ (AssetTypeEnum | Unset):
+        updated_after (datetime.datetime | Unset):
+        updated_before (datetime.datetime | Unset):
+        visibility (AssetVisibility | Unset):
+        with_deleted (bool | Unset):
+        with_exif (bool | Unset):
+    """
+
+    album_ids: list[UUID] | Unset = UNSET
+    city: None | str | Unset = UNSET
+    country: None | str | Unset = UNSET
+    created_after: datetime.datetime | Unset = UNSET
+    created_before: datetime.datetime | Unset = UNSET
+    device_id: str | Unset = UNSET
+    is_encoded: bool | Unset = UNSET
+    is_favorite: bool | Unset = UNSET
+    is_motion: bool | Unset = UNSET
+    is_not_in_album: bool | Unset = UNSET
+    is_offline: bool | Unset = UNSET
+    language: str | Unset = UNSET
+    lens_model: None | str | Unset = UNSET
+    library_id: None | Unset | UUID = UNSET
+    make: str | Unset = UNSET
+    model: None | str | Unset = UNSET
+    ocr: str | Unset = UNSET
+    page: float | Unset = UNSET
+    person_ids: list[UUID] | Unset = UNSET
+    query: str | Unset = UNSET
+    query_asset_id: UUID | Unset = UNSET
+    rating: float | Unset = UNSET
+    size: float | Unset = UNSET
+    state: None | str | Unset = UNSET
+    tag_ids: list[UUID] | None | Unset = UNSET
+    taken_after: datetime.datetime | Unset = UNSET
+    taken_before: datetime.datetime | Unset = UNSET
+    trashed_after: datetime.datetime | Unset = UNSET
+    trashed_before: datetime.datetime | Unset = UNSET
+    type_: AssetTypeEnum | Unset = UNSET
+    updated_after: datetime.datetime | Unset = UNSET
+    updated_before: datetime.datetime | Unset = UNSET
+    visibility: AssetVisibility | Unset = UNSET
+    with_deleted: bool | Unset = UNSET
+    with_exif: bool | Unset = UNSET
+    additional_properties: dict[str, Any] = _attrs_field(init=False, factory=dict)
+
+    def to_dict(self) -> dict[str, Any]:
+        album_ids: list[str] | Unset = UNSET
+        if not isinstance(self.album_ids, Unset):
+            album_ids = []
+            for album_ids_item_data in self.album_ids:
+                album_ids_item = str(album_ids_item_data)
+                album_ids.append(album_ids_item)
+
+        city: None | str | Unset
+        if isinstance(self.city, Unset):
+            city = UNSET
+        else:
+            city = self.city
+
+        country: None | str | Unset
+        if isinstance(self.country, Unset):
+            country = UNSET
+        else:
+            country = self.country
+
+        created_after: str | Unset = UNSET
+        if not isinstance(self.created_after, Unset):
+            created_after = self.created_after.isoformat()
+
+        created_before: str | Unset = UNSET
+        if not isinstance(self.created_before, Unset):
+            created_before = self.created_before.isoformat()
+
+        device_id = self.device_id
+
+        is_encoded = self.is_encoded
+
+        is_favorite = self.is_favorite
+
+        is_motion = self.is_motion
+
+        is_not_in_album = self.is_not_in_album
+
+        is_offline = self.is_offline
+
+        language = self.language
+
+        lens_model: None | str | Unset
+        if isinstance(self.lens_model, Unset):
+            lens_model = UNSET
+        else:
+            lens_model = self.lens_model
+
+        library_id: None | str | Unset
+        if isinstance(self.library_id, Unset):
+            library_id = UNSET
+        elif isinstance(self.library_id, UUID):
+            library_id = str(self.library_id)
+        else:
+            library_id = self.library_id
+
+        make = self.make
+
+        model: None | str | Unset
+        if isinstance(self.model, Unset):
+            model = UNSET
+        else:
+            model = self.model
+
+        ocr = self.ocr
+
+        page = self.page
+
+        person_ids: list[str] | Unset = UNSET
+        if not isinstance(self.person_ids, Unset):
+            person_ids = []
+            for person_ids_item_data in self.person_ids:
+                person_ids_item = str(person_ids_item_data)
+                person_ids.append(person_ids_item)
+
+        query = self.query
+
+        query_asset_id: str | Unset = UNSET
+        if not isinstance(self.query_asset_id, Unset):
+            query_asset_id = str(self.query_asset_id)
+
+        rating = self.rating
+
+        size = self.size
+
+        state: None | str | Unset
+        if isinstance(self.state, Unset):
+            state = UNSET
+        else:
+            state = self.state
+
+        tag_ids: list[str] | None | Unset
+        if isinstance(self.tag_ids, Unset):
+            tag_ids = UNSET
+        elif isinstance(self.tag_ids, list):
+            tag_ids = []
+            for tag_ids_type_0_item_data in self.tag_ids:
+                tag_ids_type_0_item = str(tag_ids_type_0_item_data)
+                tag_ids.append(tag_ids_type_0_item)
+
+        else:
+            tag_ids = self.tag_ids
+
+        taken_after: str | Unset = UNSET
+        if not isinstance(self.taken_after, Unset):
+            taken_after = self.taken_after.isoformat()
+
+        taken_before: str | Unset = UNSET
+        if not isinstance(self.taken_before, Unset):
+            taken_before = self.taken_before.isoformat()
+
+        trashed_after: str | Unset = UNSET
+        if not isinstance(self.trashed_after, Unset):
+            trashed_after = self.trashed_after.isoformat()
+
+        trashed_before: str | Unset = UNSET
+        if not isinstance(self.trashed_before, Unset):
+            trashed_before = self.trashed_before.isoformat()
+
+        type_: str | Unset = UNSET
+        if not isinstance(self.type_, Unset):
+            type_ = self.type_.value
+
+        updated_after: str | Unset = UNSET
+        if not isinstance(self.updated_after, Unset):
+            updated_after = self.updated_after.isoformat()
+
+        updated_before: str | Unset = UNSET
+        if not isinstance(self.updated_before, Unset):
+            updated_before = self.updated_before.isoformat()
+
+        visibility: str | Unset = UNSET
+        if not isinstance(self.visibility, Unset):
+            visibility = self.visibility.value
+
+        with_deleted = self.with_deleted
+
+        with_exif = self.with_exif
+
+        field_dict: dict[str, Any] = {}
+        field_dict.update(self.additional_properties)
+        field_dict.update({})
+        if album_ids is not UNSET:
+            field_dict["albumIds"] = album_ids
+        if city is not UNSET:
+            field_dict["city"] = city
+        if country is not UNSET:
+            field_dict["country"] = country
+        if created_after is not UNSET:
+            field_dict["createdAfter"] = created_after
+        if created_before is not UNSET:
+            field_dict["createdBefore"] = created_before
+        if device_id is not UNSET:
+            field_dict["deviceId"] = device_id
+        if is_encoded is not UNSET:
+            field_dict["isEncoded"] = is_encoded
+        if is_favorite is not UNSET:
+            field_dict["isFavorite"] = is_favorite
+        if is_motion is not UNSET:
+            field_dict["isMotion"] = is_motion
+        if is_not_in_album is not UNSET:
+            field_dict["isNotInAlbum"] = is_not_in_album
+        if is_offline is not UNSET:
+            field_dict["isOffline"] = is_offline
+        if language is not UNSET:
+            field_dict["language"] = language
+        if lens_model is not UNSET:
+            field_dict["lensModel"] = lens_model
+        if library_id is not UNSET:
+            field_dict["libraryId"] = library_id
+        if make is not UNSET:
+            field_dict["make"] = make
+        if model is not UNSET:
+            field_dict["model"] = model
+        if ocr is not UNSET:
+            field_dict["ocr"] = ocr
+        if page is not UNSET:
+            field_dict["page"] = page
+        if person_ids is not UNSET:
+            field_dict["personIds"] = person_ids
+        if query is not UNSET:
+            field_dict["query"] = query
+        if query_asset_id is not UNSET:
+            field_dict["queryAssetId"] = query_asset_id
+        if rating is not UNSET:
+            field_dict["rating"] = rating
+        if size is not UNSET:
+            field_dict["size"] = size
+        if state is not UNSET:
+            field_dict["state"] = state
+        if tag_ids is not UNSET:
+            field_dict["tagIds"] = tag_ids
+        if taken_after is not UNSET:
+            field_dict["takenAfter"] = taken_after
+        if taken_before is not UNSET:
+            field_dict["takenBefore"] = taken_before
+        if trashed_after is not UNSET:
+            field_dict["trashedAfter"] = trashed_after
+        if trashed_before is not UNSET:
+            field_dict["trashedBefore"] = trashed_before
+        if type_ is not UNSET:
+            field_dict["type"] = type_
+        if updated_after is not UNSET:
+            field_dict["updatedAfter"] = updated_after
+        if updated_before is not UNSET:
+            field_dict["updatedBefore"] = updated_before
+        if visibility is not UNSET:
+            field_dict["visibility"] = visibility
+        if with_deleted is not UNSET:
+            field_dict["withDeleted"] = with_deleted
+        if with_exif is not UNSET:
+            field_dict["withExif"] = with_exif
+
+        return field_dict
+
+    @classmethod
+    def from_dict(cls: type[T], src_dict: Mapping[str, Any]) -> T:
+        d = dict(src_dict)
+        _album_ids = d.pop("albumIds", UNSET)
+        album_ids: list[UUID] | Unset = UNSET
+        if _album_ids is not UNSET:
+            album_ids = []
+            for album_ids_item_data in _album_ids:
+                album_ids_item = UUID(album_ids_item_data)
+
+                album_ids.append(album_ids_item)
+
+        def _parse_city(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        city = _parse_city(d.pop("city", UNSET))
+
+        def _parse_country(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        country = _parse_country(d.pop("country", UNSET))
+
+        _created_after = d.pop("createdAfter", UNSET)
+        created_after: datetime.datetime | Unset
+        if isinstance(_created_after, Unset):
+            created_after = UNSET
+        else:
+            created_after = isoparse(_created_after)
+
+        _created_before = d.pop("createdBefore", UNSET)
+        created_before: datetime.datetime | Unset
+        if isinstance(_created_before, Unset):
+            created_before = UNSET
+        else:
+            created_before = isoparse(_created_before)
+
+        device_id = d.pop("deviceId", UNSET)
+
+        is_encoded = d.pop("isEncoded", UNSET)
+
+        is_favorite = d.pop("isFavorite", UNSET)
+
+        is_motion = d.pop("isMotion", UNSET)
+
+        is_not_in_album = d.pop("isNotInAlbum", UNSET)
+
+        is_offline = d.pop("isOffline", UNSET)
+
+        language = d.pop("language", UNSET)
+
+        def _parse_lens_model(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        lens_model = _parse_lens_model(d.pop("lensModel", UNSET))
+
+        def _parse_library_id(data: object) -> None | Unset | UUID:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, str):
+                    raise TypeError()
+                library_id_type_0 = UUID(data)
+
+                return library_id_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(None | Unset | UUID, data)
+
+        library_id = _parse_library_id(d.pop("libraryId", UNSET))
+
+        make = d.pop("make", UNSET)
+
+        def _parse_model(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        model = _parse_model(d.pop("model", UNSET))
+
+        ocr = d.pop("ocr", UNSET)
+
+        page = d.pop("page", UNSET)
+
+        _person_ids = d.pop("personIds", UNSET)
+        person_ids: list[UUID] | Unset = UNSET
+        if _person_ids is not UNSET:
+            person_ids = []
+            for person_ids_item_data in _person_ids:
+                person_ids_item = UUID(person_ids_item_data)
+
+                person_ids.append(person_ids_item)
+
+        query = d.pop("query", UNSET)
+
+        _query_asset_id = d.pop("queryAssetId", UNSET)
+        query_asset_id: UUID | Unset
+        if isinstance(_query_asset_id, Unset):
+            query_asset_id = UNSET
+        else:
+            query_asset_id = UUID(_query_asset_id)
+
+        rating = d.pop("rating", UNSET)
+
+        size = d.pop("size", UNSET)
+
+        def _parse_state(data: object) -> None | str | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            return cast(None | str | Unset, data)
+
+        state = _parse_state(d.pop("state", UNSET))
+
+        def _parse_tag_ids(data: object) -> list[UUID] | None | Unset:
+            if data is None:
+                return data
+            if isinstance(data, Unset):
+                return data
+            try:
+                if not isinstance(data, list):
+                    raise TypeError()
+                tag_ids_type_0 = []
+                _tag_ids_type_0 = data
+                for tag_ids_type_0_item_data in _tag_ids_type_0:
+                    tag_ids_type_0_item = UUID(tag_ids_type_0_item_data)
+
+                    tag_ids_type_0.append(tag_ids_type_0_item)
+
+                return tag_ids_type_0
+            except (TypeError, ValueError, AttributeError, KeyError):
+                pass
+            return cast(list[UUID] | None | Unset, data)
+
+        tag_ids = _parse_tag_ids(d.pop("tagIds", UNSET))
+
+        _taken_after = d.pop("takenAfter", UNSET)
+        taken_after: datetime.datetime | Unset
+        if isinstance(_taken_after, Unset):
+            taken_after = UNSET
+        else:
+            taken_after = isoparse(_taken_after)
+
+        _taken_before = d.pop("takenBefore", UNSET)
+        taken_before: datetime.datetime | Unset
+        if isinstance(_taken_before, Unset):
+            taken_before = UNSET
+        else:
+            taken_before = isoparse(_taken_before)
+
+        _trashed_after = d.pop("trashedAfter", UNSET)
+        trashed_after: datetime.datetime | Unset
+        if isinstance(_trashed_after, Unset):
+            trashed_after = UNSET
+        else:
+            trashed_after = isoparse(_trashed_after)
+
+        _trashed_before = d.pop("trashedBefore", UNSET)
+        trashed_before: datetime.datetime | Unset
+        if isinstance(_trashed_before, Unset):
+            trashed_before = UNSET
+        else:
+            trashed_before = isoparse(_trashed_before)
+
+        _type_ = d.pop("type", UNSET)
+        type_: AssetTypeEnum | Unset
+        if isinstance(_type_, Unset):
+            type_ = UNSET
+        else:
+            type_ = AssetTypeEnum(_type_)
+
+        _updated_after = d.pop("updatedAfter", UNSET)
+        updated_after: datetime.datetime | Unset
+        if isinstance(_updated_after, Unset):
+            updated_after = UNSET
+        else:
+            updated_after = isoparse(_updated_after)
+
+        _updated_before = d.pop("updatedBefore", UNSET)
+        updated_before: datetime.datetime | Unset
+        if isinstance(_updated_before, Unset):
+            updated_before = UNSET
+        else:
+            updated_before = isoparse(_updated_before)
+
+        _visibility = d.pop("visibility", UNSET)
+        visibility: AssetVisibility | Unset
+        if isinstance(_visibility, Unset):
+            visibility = UNSET
+        else:
+            visibility = AssetVisibility(_visibility)
+
+        with_deleted = d.pop("withDeleted", UNSET)
+
+        with_exif = d.pop("withExif", UNSET)
+
+        smart_search_dto = cls(
+            album_ids=album_ids,
+            city=city,
+            country=country,
+            created_after=created_after,
+            created_before=created_before,
+            device_id=device_id,
+            is_encoded=is_encoded,
+            is_favorite=is_favorite,
+            is_motion=is_motion,
+            is_not_in_album=is_not_in_album,
+            is_offline=is_offline,
+            language=language,
+            lens_model=lens_model,
+            library_id=library_id,
+            make=make,
+            model=model,
+            ocr=ocr,
+            page=page,
+            person_ids=person_ids,
+            query=query,
+            query_asset_id=query_asset_id,
+            rating=rating,
+            size=size,
+            state=state,
+            tag_ids=tag_ids,
+            taken_after=taken_after,
+            taken_before=taken_before,
+            trashed_after=trashed_after,
+            trashed_before=trashed_before,
+            type_=type_,
+            updated_after=updated_after,
+            updated_before=updated_before,
+            visibility=visibility,
+            with_deleted=with_deleted,
+            with_exif=with_exif,
+        )
+
+        smart_search_dto.additional_properties = d
+        return smart_search_dto
+
+    @property
+    def additional_keys(self) -> list[str]:
+        return list(self.additional_properties.keys())
+
+    def __getitem__(self, key: str) -> Any:
+        return self.additional_properties[key]
+
+    def __setitem__(self, key: str, value: Any) -> None:
+        self.additional_properties[key] = value
+
+    def __delitem__(self, key: str) -> None:
+        del self.additional_properties[key]
+
+    def __contains__(self, key: str) -> bool:
+        return key in self.additional_properties

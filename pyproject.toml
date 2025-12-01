@@ -1,0 +1,39 @@
+[project]
+name = "immich-tz-fixer"
+description = "Immich library timezone fixer"
+requires-python= ">=3.10,<4.0"
+version = "0.0.1"
+readme = "README.md"
+import-names = [ "immich_tz_fixer ; private", "immich_client ; private" ]
+packages = [ 
+  { include = "immich_tz_fixer" },
+  { include = "immich_client" },
+]
+include = [ "immich_client/py.typed" ]
+dependencies = [
+  "httpx>=0.23.0,<0.29.0",
+  "attrs>=22.2.0",
+  "python-dateutil>2.8.0",
+  "pyexiftool>=0.5",
+  "importlib-metadata>=8.7.0",
+]
+
+[project.scripts]
+immich-tz-fixer = "immich_tz_fixer:run"
+
+[dependency-groups]
+dev = [
+    "mypy>=1.19.0",
+    "ruff>=0.14.7",
+    "types-python-dateutil>=2.9.0.20251115",
+]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["F", "I", "UP"]
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

@@ -1,0 +1,27 @@
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info/
+.pytest_cache/
+
+# pyenv
+.python-version
+
+# Environments
+.env
+.venv
+
+# dev tools
+.vscode/
+.ruff_cache/
+.mypy_cache/
+.dmypy.json
+dmypy.json
+.idea/
+
+/coverage.xml
+/.coverage
+/ch*.log
+/sample_data
