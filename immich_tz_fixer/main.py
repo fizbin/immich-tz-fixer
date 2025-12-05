@@ -333,7 +333,9 @@ def run(argv: None | Iterable[str] = None) -> int:
     logger.debug(f"Basing times on default date {default_date.isoformat()}, timezone {default_tz}")
 
     wisdom: dict[str, datetime] = {}
-    if not args.no_files:
+    if args.no_files:
+        logger.info("Proceeding without metadata from local files because --no-files was given")
+    else:
         processed = 0
         with exiftool.ExifToolHelper() as et_helper:
             for path in pathfiles(*args.paths):
@@ -347,6 +349,7 @@ def run(argv: None | Iterable[str] = None) -> int:
             return 1
         logger.info(f"Processed {processed} path(s).")
 
+    change_count = 0
     with AuthenticatedClient.from_api_key(base_url=args.url, api_key=args.api_key) as client:
         try:
             search_params = _make_search_params(args, default_tz, client)
@@ -397,6 +400,7 @@ def run(argv: None | Iterable[str] = None) -> int:
                             f"Asset ID {asset.id} ({orig_key}) already has correct date {correct_date.isoformat()}"
                         )
                         continue
+                change_count += 1
                 if args.dry_run:
                     print(
                         f"Would update asset ID {asset.id} ({orig_key}) to date {correct_date.isoformat()}"
@@ -416,6 +420,10 @@ def run(argv: None | Iterable[str] = None) -> int:
                 logger.debug(
                     f"No matching local file found for asset ID {asset.id} ({asset.original_file_name})"
                 )
+    if args.dry_run:
+        logger.info(f"Would update {change_count} assets")
+    else:
+        logger.info(f"Updated {change_count} assets")
     return 0
 
 
