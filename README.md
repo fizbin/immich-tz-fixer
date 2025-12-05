@@ -33,9 +33,9 @@ the local file `DCIM/PANA_107/P1070427.RW2` will match an asset with the `origin
 `/usr/src/app/upload/library/e1f676f8-90cd-47d2-9477-2b95eb407f47/2025/2025-11-30/P1070427.jpg`
 (since the stem in both cases is `P1070427`)
 
-## Example
+## Immich versions
 
-Suppose that you had 
+This tool has been so far tested and used only against Immich v2.3.1.
 
 ## Installation
 
@@ -64,6 +64,40 @@ usage: immich-tz-fixer [-h] --url URL --api-key API_KEY [--version] [--dry-run] 
                        [--try-prefix TRY_PREFIX] [--verbose] [--log-file LOG_FILE] [--no-files]
                        [paths ...]
 ```
+
+## Example
+
+Suppose that you had photos from a particular camera which, when uploaded to immich, were always
+set to have a timezone offset of `-09:00` or `-08:00` despite your living in Chicago, which is in
+US central time (and five or six hours off from UTC, depending on the time of year). If those
+photos were the only photos uploaded to immich from that particular camera model, and you had the
+original photo files available elsewhere, you could do:
+
+    uv run immich-tz-fixer --url https://myphotos.myname.com/api --api-key myAPIkey
+          --timezone US/Central --model DMC-GX7 "C:\Photo Archive\Phil's Camera\" 
+
+and all the photos in that directory (recursively) would be used to reset the precise time on
+photos stored in immich, and also the local timezone offset would be set to five or six hours
+offset from UTC, as appropriate. (Useful if manually fixing the time in older versions of immich
+has cut off the seconds or microseconds of the time)
+
+If you then later take a trip to California (US "Pacific" time zone), and return and then realize
+that those photos should have a local timezone set on them of Pacific time, whereas most of your
+photos taken after your trip should still use Central time, you can do:
+
+    uv run immich-tz-fixer --url https://myphotos.myname.com/api --api-key myAPIkey
+          --after=2025-06-18 --before=2025-06-24 --timezone US/Pacific
+          --model DMC-GX7 "C:\Photo Archive\Phil's Camera\" 
+
+(Note that the dates are *exclusive*; this will affect phtotos taken on the 19th but not the 18th)
+
+If you don't have your original photo archive, and just want to reset the timezone without
+potentially correcting second and microsecond details of timestamps to match
+what photo metadata may say, you can use the `--no-files` option. With that option, all matching
+assets will have their timezone adjusted to what you specify as `--timezone`.
+
+If using `--nofiles`, it is *strongly recommended* that you run run first with `--dry-run` to see
+what assets would have their date tweaked and how.
 
 ## Arguments
 
