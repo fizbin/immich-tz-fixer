@@ -71,7 +71,8 @@ Suppose that you had photos from a particular camera which, when uploaded to imm
 set to have a timezone offset of `-09:00` or `-08:00` despite your living in Chicago, which is in
 US central time (and five or six hours off from UTC, depending on the time of year). If those
 photos were the only photos uploaded to immich from that particular camera model, and you had the
-original photo files available elsewhere, you could do:
+original photo files available elsewhere, you could do: (This example, and all others, should be
+written as one single long line)
 
     uv run immich-tz-fixer --url https://myphotos.myname.com/api --api-key myAPIkey
           --timezone US/Central --model DMC-GX7 "C:\Photo Archive\Phil's Camera\" 
