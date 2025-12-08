@@ -37,6 +37,14 @@ the local file `DCIM/PANA_107/P1070427.RW2` will match an asset with the `origin
 
 This tool has been so far tested and used only against Immich v2.3.1.
 
+## Prerequisite
+
+This requires that the program [exiftool](https://exiftool.org/) be installed and
+available on the `PATH`.
+
+It is a python script, so you will also either need python installed already or, as
+recommended in the next section, will want to install the tool [uv](https://docs.astral.sh/uv/).
+
 ## Installation
 
 The recommended way to run this tool is via [uv](https://docs.astral.sh/uv/); with that
@@ -90,7 +98,7 @@ photos taken after your trip should still use Central time, you can do:
           --after=2025-06-18 --before=2025-06-24 --timezone US/Pacific
           --model DMC-GX7 "C:\Photo Archive\Phil's Camera\" 
 
-(Note that the dates are *exclusive*; this will affect phtotos taken on the 19th but not the 18th)
+(Note that the dates are **exclusive**; this will affect phtotos taken on the 19th but not the 18th)
 
 If you don't have your original photo archive, and just want to reset the timezone without
 potentially correcting second and microsecond details of timestamps to match
